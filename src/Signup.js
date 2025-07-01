@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_BASE_URL from './config';
 
 const initialState = {
   fullName: '',
@@ -27,7 +28,7 @@ export default function Signup() {
     setMessage('');
     setError('');
     try {
-      const res = await fetch('http://localhost:3000/users/signup', {
+      const res = await fetch(`${API_BASE_URL}/users/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

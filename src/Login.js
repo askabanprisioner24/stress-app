@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import API_BASE_URL from './config';
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -20,7 +21,7 @@ export default function Login() {
     setMessage('');
     setError('');
     try {
-      const res = await fetch('http://localhost:3000/users/login', {
+      const res = await fetch(`${API_BASE_URL}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
